@@ -1,14 +1,14 @@
 #include <iostream>
+#include <algorithm>
+
+using namespace std;
 
 #define FOR(i, n) for (int i = 0; i < n; i++)
 #define OUT(s) cout << s << endl;
 #define IN(a) cin >> a;
-#define PACK(a, n) \
-  for (int i = 0; i < n; i++) cin >> a[i];
-#define LIST(a, n) \
-  for (int i = 0; i < n; i++) cout << "[" << i << "] " << a[i] << endl;
-
-using namespace std;
+#define PACK(a, n)                                                             \
+  for (int i = 0; i < n; i++)                                                  \
+    cin >> a[i];
 
 int main() {
   // input
@@ -30,7 +30,9 @@ int main() {
     distanceSum += distance[i];
   }
   sort(distance, distance + M - 1);
-  FOR(i, N - 1) { distanceSum -= distance[M - 2 - i]; }
+  FOR(i, N - 1) {
+    distanceSum -= distance[M - 2 - i];
+  }
 
   OUT(distanceSum);
 }

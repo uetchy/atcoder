@@ -1,5 +1,4 @@
 #!/bin/sh
-# install: pip3 install online-judge-tools
 
 set -e
 
@@ -10,5 +9,5 @@ SOURCE=./$CONTEST/$TASK.cpp
 
 rm -rf test a.out
 oj dl "https://${CONTEST}.contest.atcoder.jp/tasks/${TASK}"
-g++ -Wall -std=c++14 $SOURCE
+g++ -Wall -std=c++14 ${SOURCE}
 oj test
