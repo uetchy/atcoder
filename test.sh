@@ -2,8 +2,8 @@
 
 set -e
 
-CONTEST=${CONTEST:-abc117}
-TASK=${TASK:-abc117_c}
+CONTEST=${CONTEST:?"Specify CONTEST"}
+TASK=${TASK:?"Specify TASK"}
 
 SOURCE=./$CONTEST/$TASK.cpp
 
