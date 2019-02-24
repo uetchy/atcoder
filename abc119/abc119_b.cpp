@@ -33,12 +33,10 @@ int main() {
     cin >> currency;
     if (currency == "BTC") {
       amount *= 380000.0;
-      sum += amount;
-    } else {
-      sum += amount;
     }
+    sum += amount;
   }
 
   std::cout << std::showpoint << std::fixed;
-  OUT((double)sum);
+  OUT(sum);
 }
