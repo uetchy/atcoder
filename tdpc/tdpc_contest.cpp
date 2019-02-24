@@ -1,8 +1,8 @@
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 #include <algorithm>
 #include <string>
+#include <iomanip>
 #include <map>
 #include <set>
 #include <bitset>
@@ -21,18 +21,21 @@ using namespace std;
   for (int i = 0; i < n; i++)                                                  \
     cout << "[" << i << "] " << a[i] << endl;
 
+int factorial(int i) {
+  if (i > 1) {
+    return factorial(i - 1);
+  } else {
+    return 1;
+  }
+}
+
 int main() {
-  // input
   int N;
   IN(N);
-  int X[N];
-  PACK(X, N);
+  int P[N];
+  PACK(P, N);
 
-  LIST(X, N); // DEBUG
-
-  // calculation
-  // TODO: your code here
-
-  // output
-  OUT("result");
+  vector<int> data(P, P + N);
+  int uniqueSize = set<int>(data.begin(), data.end()).size();
+  OUT(uniqueSize + 1 + N);
 }
