@@ -9,13 +9,25 @@ oj login -u <user> -p <password> https://atcoder.jp/login
 
 ## Test
 
+### Samples
+
 ```
-CONTEST=abc117 TASK=abc117_c ./test.sh
+# edit `.env`
+./scripts/test.sh
+```
+
+### Custom
+
+```
+cat<<EOD | ./a.out
+4
+4 3 3 2
+EOD
 ```
 
 ## VSCode
 
-Add `.vscode/tasks.json`:
+Add following task to `.vscode/tasks.json`:
 
 ```json
 {
@@ -25,12 +37,6 @@ Add `.vscode/tasks.json`:
       "label": "test",
       "type": "shell",
       "command": "./test.sh",
-      "options": {
-        "env": {
-          "CONTEST": "abc117",
-          "TASK": "abc117_c"
-        }
-      },
       "group": {
         "kind": "build",
         "isDefault": true
@@ -40,3 +46,5 @@ Add `.vscode/tasks.json`:
   ]
 }
 ```
+
+then hit <kbd>command</kbd> + <kbd>shift</kbd> + <kbd>b</kbd>.

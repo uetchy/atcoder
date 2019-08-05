@@ -1,13 +1,13 @@
-#include <iostream>
-#include <iomanip>
-#include <cmath>
 #include <algorithm>
-#include <string>
+#include <bitset>
+// #include <boost/algorithm/string/replace.hpp>
+#include <cmath>
+#include <iomanip>
+#include <iostream>
 #include <map>
 #include <set>
-#include <bitset>
+#include <string>
 #include <vector>
-#include <boost/algorithm/string/replace.hpp>
 
 using namespace std;
 
@@ -25,14 +25,20 @@ int main() {
   // input
   int N;
   IN(N);
-  int X[N];
-  PACK(X, N);
+  int H[N];
+  PACK(H, N);
+  // LIST(X, N);
 
-  LIST(X, N); // DEBUG
+  // handle edge case (N == 1, N == 2, ...)
 
-  // calculation
-  // TODO: your code here
+  // aggregation
+  int sum = 0;
+  FOR(i, N) {
+    sum += i;
+  }
+
+  // check
 
   // output
-  OUT("result");
+  OUT(sum);
 }
