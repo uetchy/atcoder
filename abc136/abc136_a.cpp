@@ -7,11 +7,6 @@ using namespace std;
 
 int main() {
   int A, B, C;
-  cin >> A >> B >> C;
-  int result = C - (A - B);
-  if (result < 0) {
-    OUT(0);
-  } else {
-    OUT(result);
-  }
+  IN(A >> B >> C);
+  OUT(max(0, C - (A - B)));
 }

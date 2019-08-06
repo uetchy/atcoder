@@ -3,15 +3,15 @@
 set -e
 
 CONTEST=abc136
-TASK=abc136_b
+TASK=abc136_a
 
 ROOT_DIR="$(dirname $0)/.."
 SOURCE="${ROOT_DIR}/${CONTEST}/${TASK}.cpp"
 
-oj dl "https://${CONTEST}.contest.atcoder.jp/tasks/${TASK}"
+oj dl "https://${CONTEST}.contest.atcoder.jp/tasks/${TASK}" -d "tests/${TASK}"
 g++ -Wall -std=c++14 ${SOURCE}
-oj test -i
+oj test -d "tests/${TASK}" -j4
 
-cat<<EOD | ./a.out
-1400
-EOD
+# cat<<EOD | ./a.out
+# 1400
+# EOD
