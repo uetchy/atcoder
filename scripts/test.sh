@@ -3,7 +3,7 @@
 set -e
 
 CONTEST=abc136
-TASK=abc136_a
+TASK=abc136_d
 
 ROOT_DIR="$(dirname $0)/.."
 SOURCE="${ROOT_DIR}/${CONTEST}/${TASK}.cpp"
