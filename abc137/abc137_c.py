@@ -1,9 +1,6 @@
+from collections import defaultdict
 N = int(input())
-S = {}
+S = defaultdict(int)
 for i in range(N):
-    j = sorted(input())
-    if j in S:
-        S[j] += 1
-    else:
-        S[j] = 0
-print(sum)
+    S["".join(sorted(input()))] += 1
+print(sum([sum(range(1, x)) for x in S.values()]))
