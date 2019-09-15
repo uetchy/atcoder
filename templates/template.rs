@@ -24,10 +24,13 @@ macro_rules! read {
   })
 }
 
-macro_rules! puts {
-  ($($t:expr),+) => {
-    $(print!("{} ", &$t);)+
-    print!("\n");
+macro_rules! debug {
+  ($($t:expr),+) => { $(print!("{:?} ", $t);)+ println!(); };
+}
+
+macro_rules! out {
+  ($t:expr) => {
+    println!("{}", &$t);
   }
 }
 
@@ -38,6 +41,8 @@ macro_rules! entry {
 fn main() {
   let (N, K, Q) = read!(i32, i32, i32);
 
+  puts!(N, K, Q);
+
   let mut score = HashMap::<i32, i32>::new();
   for _ in 0..Q {
     entry!(score, read::<i32>() - 1) += 1;
@@ -45,19 +50,11 @@ fn main() {
   
   for i in 0..N {
     if K - (Q - entry!(score, i)) > 0 {
-      print("Yes");
+      out("Yes");
     } else {
-      print("No");
+      out("No");
     }
   }
-}
-
-fn print<T: std::fmt::Display>(target: T)  {
-  println!("{}", target);
-}
-
-fn debug<T: Debug>(target: &T) {
-  println!("{:?}", target);
 }
 
 // read from stdin
@@ -68,7 +65,7 @@ fn read<T: FromStr>() -> T {
 }
 
 // read from stdin as whitespace separated vector
-fn read_hvec<T: FromStr>() -> Vec<T> {
+fn read_vec<T: FromStr>() -> Vec<T> {
   let mut s = String::new();
   stdin().read_line(&mut s).ok();
   s.trim()
@@ -78,7 +75,7 @@ fn read_hvec<T: FromStr>() -> Vec<T> {
 }
 
 // read from stdin as line separated vector
-fn read_vseq<T: FromStr>(n: u64) -> Vec<T> {
+fn read_lines<T: FromStr>(n: u64) -> Vec<T> {
   let mut v = Vec::new();
   for _ in 0..n {
     let mut text = String::new();

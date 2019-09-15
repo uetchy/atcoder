@@ -1,5 +1,4 @@
 #![allow(unused_imports)]
-#![allow(unused_macros)]
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
@@ -26,9 +25,12 @@ macro_rules! read {
 }
 
 macro_rules! puts {
-  ($($t:expr),+) => {
-    $(print!("{} ", &$t);)+
-    print!("\n");
+  ($($t:expr),+) => { $(print!("{:?} ", $t);)+ println!(); };
+}
+
+macro_rules! out {
+  ($t:expr) => {
+    println!("{}", &$t);
   }
 }
 
@@ -46,19 +48,11 @@ fn main() {
   
   for i in 0..N {
     if K - (Q - entry!(score, i)) > 0 {
-      print("Yes");
+      out!("Yes");
     } else {
-      print("No");
+      out!("No");
     }
   }
-}
-
-fn print<T: std::fmt::Display>(target: T)  {
-  println!("{}", target);
-}
-
-fn debug<T: Debug>(target: &T) {
-  println!("{:?}", target);
 }
 
 // read from stdin
