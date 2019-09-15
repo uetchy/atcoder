@@ -1,17 +1,37 @@
 #!/bin/sh
-
 set -e
 
-CONTEST=abc137
-TASK=abc137_c
 
+QUESTION=d
+CONTEST=abc141
+LANGUAGE=rs
+
+TASK="${CONTEST}_${QUESTION}"
 ROOT_DIR="$(dirname $0)/.."
-SOURCE="${ROOT_DIR}/${CONTEST}/${TASK}.cpp"
+TARGET_DIR="${ROOT_DIR}/target"
+BIN_PATH="${TARGET_DIR}/${TASK}"
+SOURCE="${ROOT_DIR}/contests/${CONTEST}/${TASK}"
+TEST_DIR="${ROOT_DIR}/tests/${CONTEST}/${TASK}"
 
-oj dl "https://${CONTEST}.contest.atcoder.jp/tasks/${TASK}" -d "tests/${TASK}"
-g++ -Wall -std=c++14 ${SOURCE}
-oj test -d "tests/${TASK}" -j4
+if [[ ! -d "${TEST_DIR}" ]]
+then
+  mkdir -p "${TEST_DIR}"
+  oj dl "https://${CONTEST}.contest.atcoder.jp/tasks/${TASK}" -d "${TEST_DIR}"
+fi
 
-# cat<<EOD | ./a.out
-# 1400
-# EOD
+case "${LANGUAGE}" in
+  "cpp" | "c++" | "c")
+    g++ -Wall -std=c++14 ${SOURCE}.cpp -o "${BIN_PATH}"
+    oj test -d "${TEST_DIR}" --command="${BIN_PATH}"
+    ;;
+  "python" | "py")
+    oj test -d "${TEST_DIR}" --command="python3 ${ROOT_DIR}/${SOURCE}.py"
+    ;;
+  "rust" | "rs")
+    rustc "${SOURCE}.rs" -o "${BIN_PATH}"
+    oj test -d "${TEST_DIR}" --command="${BIN_PATH}"
+    ;;
+  *)
+    echo "INVALID LANGUAGE GIVEN"
+    ;;
+esac
