@@ -23,9 +23,9 @@ macro_rules! map_entry {
 // puts!(N, K, Q);
 // puts!(hashMap; debug);
 macro_rules! puts {
+  ($t:expr) => { println!("{}", $t); };
   ($($t:expr),+;debug) => { $(print!("{:?} ", $t);)+ println!(); };
   ($($t:expr),+) => { $(print!("{} ", $t);)+ println!(); };
-  ($t:expr) => { println!("{}", $t); };
 }
 
 macro_rules! read {
