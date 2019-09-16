@@ -21,10 +21,10 @@ macro_rules! map_entry {
 
 // puts!("Yes");
 // puts!(N, K, Q);
-// puts!(hashMap; debug);
+// puts!(hashMap;);
 macro_rules! puts {
   ($t:expr) => { println!("{}", $t); };
-  ($($t:expr),+;debug) => { $(print!("{:?} ", $t);)+ println!(); };
+  ($($t:expr),+;) => { $(print!("{:?} ", $t);)+ println!(); };
   ($($t:expr),+) => { $(print!("{} ", $t);)+ println!(); };
 }
 
@@ -52,7 +52,9 @@ macro_rules! read {
   });
   // let (N, K) = read!(i32, i64);
   ($($t: ty),+) => ({
-    let mut input = String::new(); stdin().read_line(&mut input).ok(); let mut iter = input.split_whitespace();
+    let mut input = String::new();
+    stdin().read_line(&mut input).ok();
+    let mut iter = input.split_whitespace();
     ($(iter.next().unwrap().parse::<$t>().unwrap(),)+)
   });
   // let matrix = read!(i32; N,_);
@@ -97,21 +99,15 @@ fn main() {
   let A = read!(); // 型指定が無ければi32として入力を得る
 
   // 一行ベクター
-  let B = read!([i32]); // 1行読み込み、Vec<i32>として得る
+  let B = read!([f64]); // 1行読み込み、Vec<f64>として得る
 
   // 複数行
   let C = read!(String; 3); // 3行読み込み、Vec<String>として得る
-  let D = read!(String; 3,); // 3行読み込み、3xN行列 Vec<Vec<String>>として得る
+  let D = read!(i32; 3,); // 3行読み込み、3xN行列 Vec<Vec<String>>として得る
 
-  puts!("Yes"); // Yesを表示
-  puts!(N, K); // N, Kを空白分割して表示
-  puts!(C; debug); // CをDebug表示
-
-  for _ in 0..N {
-    if K > 0 {
-      puts!("Yes");
-    } else {
-      puts!("No");
-    }
-  }
+  puts!(N, K);
+  puts!(M, A);
+  puts!(B;);
+  puts!(C;);
+  puts!(D;);
 }
