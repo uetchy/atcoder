@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-ROOT_DIR="$(dirname $0)"
-FILE_PATH="${ROOT_DIR}/template.rs"
-BIN_PATH="${ROOT_DIR}/rustbin"
+ROOT_DIR="$(dirname $0)/.."
+FILE_PATH="${ROOT_DIR}/templates/template.rs"
+BIN_PATH="${ROOT_DIR}/target/template-rs"
 
 rustup run 1.15.1 rustc "${FILE_PATH}" -o "${BIN_PATH}"
 "${BIN_PATH}" <<EOD
