@@ -33,7 +33,7 @@ case "${LANGUAGE}" in
     oj test -d "${TEST_DIR}" --command="python3 ${ROOT_DIR}/${SOURCE}.py" -i
     ;;
   "rust" | "rs")
-    rustc "${SOURCE}.rs" -o "${BIN_PATH}"
+    rustup run 1.15.1 rustc "${SOURCE}.rs" -o "${BIN_PATH}"
     oj test -d "${TEST_DIR}" --command="${BIN_PATH}" -i
     ;;
   *)
