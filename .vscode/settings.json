@@ -1,0 +1,32 @@
+{
+  "files.associations": {
+    ".envrc": "dotenv",
+    "zshrc": "shellscript",
+    "string": "cpp",
+    "iostream": "cpp",
+    "ostream": "cpp",
+    "algorithm": "cpp",
+    "iomanip": "cpp",
+    "set": "cpp",
+    "ratio": "cpp",
+    "__locale": "cpp",
+    "__string": "cpp",
+    "string_view": "cpp",
+    "vector": "cpp"
+  },
+  "editor.renderWhitespace": "boundary",
+  "files.autoSave": "afterDelay",
+  "editor.formatOnPaste": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "target": true,
+    "Cargo.lock": true,
+    ".clang-format": true,
+    "LICENSE": true
+  },
+  "rls"
+}
